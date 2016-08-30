@@ -92,19 +92,20 @@ clay_per_3 = clay_Q_3/Den*100
 clay_Q_4 = Q_4/molar_SiO2/2.8*256.8
 clay_per_4 = clay_Q_4/Den*100
 
+#Convert Erosion rate mm/kyr
+e= E*1000000
 
-
-pp.plot(E,clay_per_0,linewidth=3,label = ("q = "+str(q[0])))
-pp.plot(E,clay_per_1,linewidth=3,label = ("q = "+str(q[1])))
-pp.plot(E,clay_per_2,linewidth=3,label = ("q = "+str(q[2])))
-pp.plot(E,clay_per_3,linewidth=3,label = ("q = "+str(q[3])))
-pp.plot(E,clay_per_4,linewidth=3,label = ("q = "+str(q[4]))) 
+pp.plot(e,clay_per_0,linewidth=3,label = ("$q\ (m)$ = "+str(q[0])))
+pp.plot(e,clay_per_1,linewidth=3,label = ("$q\ (m)$ = "+str(q[1])))
+pp.plot(e,clay_per_2,linewidth=3,label = ("$q\ (m)$ = "+str(q[2])))
+pp.plot(e,clay_per_3,linewidth=3,label = ("$q\ (m)$ = "+str(q[3])))
+pp.plot(e,clay_per_4,linewidth=3,label = ("$q\ (m)$ = "+str(q[4]))) 
 
 pp.legend(loc=1,fontsize='22')
 pp.rcParams['xtick.direction'] = 'in'
 pp.rcParams['ytick.direction'] = 'in'
-ax1.set_xlim(min(E),max(E))
-ax1.set_ylim(0,100)
+ax1.set_xlim(min(e),max(e))
+ax1.set_ylim(0,50)
 ax1.set_xscale('log')
   
 
@@ -121,11 +122,11 @@ for line in ax1.get_xticklines():
 for line in ax1.get_yticklines():
     line.set_marker(mpllines.TICKRIGHT)
 
-pp.xlabel('Erosion Rate ($m\ a^{-1}$)',fontsize = axis_size)
-pp.ylabel('Clay Particle Size Fraction (%)',fontsize = axis_size) 
+pp.xlabel('Erosion Rate ($mm\ kyr^{-1}$)',fontsize = axis_size)
+pp.ylabel('A Horizon Clay Content (%)',fontsize = axis_size) 
 
 pp.tight_layout()
-  
+pp.savefig('Maher_clay_particle_size_fraction_erosion_rate.png', dpi=500, bbox_inches='tight')  
 pp.show()
 
 
